@@ -16,6 +16,8 @@ let pessoa: { nome: string, idade: number, adulto?: boolean } = {
   idade: 19,
 }
 
+export default pessoa
+
 // Funções
 
 function soma(x: number, y: number): number {
