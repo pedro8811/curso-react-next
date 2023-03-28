@@ -11,6 +11,12 @@ export class Empresa {
   adicionaColaborador(colaborador: Colaborador): void{
     this.colaboradores.push(colaborador)
   }
+
+  mostrarColaboradores(): void{
+    for(const colaborador of this.colaboradores){
+      console.log(colaborador)
+    }
+  }
 }
 
 export class Colaborador {
@@ -20,8 +26,12 @@ export class Colaborador {
 }
 
 const empresa1 = new Empresa('Fake', '11.111.111/0001-11')
-const colobador1 = new Colaborador('Pedro', 'Henrique');
-const colobador2 = new Colaborador('Edvaldo', 'Fagundes');
-const colobador3 = new Colaborador('João', 'Henrique');
+const colaborador1 = new Colaborador('Pedro', 'Henrique');
+const colaborador2 = new Colaborador('Edvaldo', 'Fagundes');
+const colaborador3 = new Colaborador('João', 'Henrique');
+empresa1.adicionaColaborador(colaborador1)
+empresa1.adicionaColaborador(colaborador2)
+empresa1.adicionaColaborador(colaborador3)
 
 console.log(empresa1)
+empresa1.mostrarColaboradores
