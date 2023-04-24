@@ -2,8 +2,8 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
-import { Home } from '.';
 import userEvent from '@testing-library/user-event';
+import { Home } from '.';
 
 const handlers = [
   rest.get('*jsonplaceholder.typicode.com*', async (req, res, ctx) => {
@@ -70,7 +70,7 @@ describe('<Home />', () => {
     render(<Home />);
     const noMorePosts = screen.getByText('Não existem posts =(');
 
-    expect.assertions(6);
+    expect.assertions(10);
 
     await waitForElementToBeRemoved(noMorePosts);
 
@@ -84,7 +84,7 @@ describe('<Home />', () => {
     expect(screen.getByRole('heading', { name: 'title1 1' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'title2 2' })).not.toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'title3 3' })).not.toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'asd' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Search value: title1' })).toBeInTheDocument();
 
     userEvent.clear(search);
     expect(screen.getByRole('heading', { name: 'title1 1' })).toBeInTheDocument();
@@ -94,18 +94,18 @@ describe('<Home />', () => {
     expect(screen.getByText('Não existem posts =(')).toBeInTheDocument();
   });
 
-  // it('should load more posts', async () => {
-  //   render(<Home />);
-  //   const noMorePosts = screen.getByText('Não existem posts =(');
+  it('should load more posts', async () => {
+    render(<Home />);
+    const noMorePosts = screen.getByText('Não existem posts =(');
 
-  //   expect.assertions(0);
+    //expect.assertions(0);
 
-  //   await waitForElementToBeRemoved(noMorePosts);
+    await waitForElementToBeRemoved(noMorePosts);
 
-  //   const button = screen.getByRole('button', { name: /load more posts/i });
+    const button = screen.getByRole('button', { name: /load more posts/i });
 
-  //   userEvent.click(button);
-  //   expect(screen.getByRole('heading', { name: 'title3 3' })).toBeInTheDocument();
-  //   expect(button).toBeDisabled();
-  // });
+    userEvent.click(button);
+    expect(screen.queryByRole('heading', { name: 'title3 3' })).toBeInTheDocument();
+    expect(button).toBeDisabled();
+  });
 });
