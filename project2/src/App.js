@@ -1,39 +1,12 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-
-const eventFn = () => {
-  console.log('h1 clicado');
-};
+import { Div } from './components/Div';
+import { AppContext } from './context/AppContext';
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const [counter2, setCounter2] = useState(0);
-
-  // componentDidUpdate = executa toda vez q o componente atualiza
-  // useEffect(() => {
-  //   console.log('componentDidUpdate');
-  // });
-
-  // componentDidMount = executa 1x
-  useEffect(() => {
-    document.querySelector('h1')?.addEventListener('click', eventFn);
-  }, []);
-
-  // Com dependência = executa toda vez que a dependência mudar
-  useEffect(() => {
-    console.log('C1:', counter, 'C2:', counter2);
-  }, [counter, counter2]);
-
   return (
-    <div className="App">
-      <h1>
-        C1: {counter}
-        <br />
-        C2: {counter2}
-      </h1>
-      <button onClick={() => setCounter(counter + 1)}>+</button>
-      <button onClick={() => setCounter2(counter2 + 1)}>+ 2</button>
-    </div>
+    <AppContext>
+      <Div />
+    </AppContext>
   );
 }
 
