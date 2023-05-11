@@ -2,10 +2,5 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html, body{
-  background-color: rgb(31, 31, 31);
-  color: white;
-  font-family: sans-serif;
+  color: black;
 }
