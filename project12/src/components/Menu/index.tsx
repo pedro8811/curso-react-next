@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export const Menu = () => {
@@ -9,7 +9,9 @@ export const Menu = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about" state={"This is state from ABOUT"}>
+            About
+          </Link>
         </li>
         <li>
           <Link to="/posts">Posts</Link>
