@@ -23,6 +23,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "menu_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "menu.menu-link",
+      "required": true
     }
   }
 }
