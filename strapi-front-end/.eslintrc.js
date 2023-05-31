@@ -9,9 +9,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
-    'plugin:storybook/recommended',
-    'plugin:storybook/recommended',
-    'plugin:storybook/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
